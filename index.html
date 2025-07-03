@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DishLyft - Food Delivery</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Dish<span>Lyft</span></h1>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#">Orders</a>
+                <a href="#">Account</a>
+                <a href="cart.html" class="cart-link">Cart (<span id="cart-count">0</span>)</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="search-section">
+            <input type="text" id="search" placeholder="Search for restaurants or dishes...">
+            <button>Search</button>
+        </section>
+
+        <section class="categories">
+            <h2>Categories</h2>
+            <div class="category-list">
+                <button class="active">All</button>
+                <button>Fast Food</button>
+                <button>Local</button>
+                <button>Drinks</button>
+                <button>Healthy</button>
+                <button>Desserts</button>
+            </div>
+        </section>
+
+        <section class="featured">
+            <h2>Featured Restaurants</h2>
+            <div class="restaurant-grid" id="restaurants">
+                <!-- Filled by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 DishLyft. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
