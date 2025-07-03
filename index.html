@@ -4,53 +4,210 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DishLyft - Food Delivery</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Header (Shared across all pages) -->
     <header>
         <div class="container">
-            <h1 class="logo">Dish<span>Lyft</span></h1>
+            <div class="logo">
+                <img src="images/dishlyft-logo.png" alt="DishLyft Logo" width="150">
+            </div>
             <nav>
-                <a href="#" class="active">Home</a>
-                <a href="#">Orders</a>
-                <a href="#">Account</a>
-                <a href="cart.html" class="cart-link">Cart (<span id="cart-count">0</span>)</a>
+                <a href="#" class="nav-link" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="orders">Orders</a>
+                <a href="#" class="nav-link" data-page="account">Account</a>
+                <a href="#" class="cart-link nav-link" data-page="cart">Cart (<span id="cart-count">0</span>)</a>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        <section class="search-section">
-            <input type="text" id="search" placeholder="Search for restaurants or dishes...">
-            <button>Search</button>
-        </section>
+    <!-- Page Container -->
+    <main class="container" id="page-container">
+        <!-- Home Page -->
+        <div id="home-page" class="page" style="display: block;">
+            <section class="search-section">
+                <input type="text" id="search" placeholder="Search for restaurants or dishes...">
+                <button>Search</button>
+            </section>
 
-        <section class="categories">
-            <h2>Categories</h2>
-            <div class="category-list">
-                <button class="active">All</button>
-                <button>Fast Food</button>
-                <button>Local</button>
-                <button>Drinks</button>
-                <button>Healthy</button>
-                <button>Desserts</button>
-            </div>
-        </section>
+            <section class="categories">
+                <h2>Categories</h2>
+                <div class="category-list">
+                    <button class="active">All</button>
+                    <button>Fast Food</button>
+                    <button>Local</button>
+                    <button>Drinks</button>
+                    <button>Healthy</button>
+                    <button>Desserts</button>
+                </div>
+            </section>
 
-        <section class="featured">
-            <h2>Featured Restaurants</h2>
-            <div class="restaurant-grid" id="restaurants">
-                <!-- Filled by JavaScript -->
-            </div>
-        </section>
+            <section class="featured">
+                <h2>Featured Restaurants</h2>
+                <div class="restaurant-grid" id="restaurants">
+                    <div class="restaurant-card" data-restaurant-id="1">
+                        <div class="restaurant-image">
+                            <img src="images/restaurant1.jpg" alt="Burger Palace">
+                        </div>
+                        <div class="restaurant-info">
+                            <h3>Burger Palace</h3>
+                            <p>American • Fast Food</p>
+                            <div class="restaurant-details">
+                                <span>⭐ 4.5 (250+)</span>
+                                <span>🛵 $2.99</span>
+                                <span>⏱️ 20-30 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More restaurant cards... -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Restaurant Page -->
+        <div id="restaurant-page" class="page" style="display: none;">
+            <section class="restaurant-header">
+                <div class="restaurant-image">
+                    <img src="images/restaurant1.jpg" alt="Burger Palace">
+                </div>
+                <div class="restaurant-info">
+                    <h1>Burger Palace</h1>
+                    <p class="cuisine">American • Fast Food • Burgers</p>
+                    <div class="details">
+                        <span>⭐ 4.5 (250+)</span>
+                        <span>🛵 $2.99 delivery</span>
+                        <span>⏱️ 20-30 min</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="menu-items">
+                <div class="menu-section">
+                    <h3>Burgers</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item">
+                            <div class="menu-item-image">
+                                <img src="images/burger1.jpg" alt="Classic Burger">
+                            </div>
+                            <div class="menu-item-info">
+                                <h4>Classic Burger</h4>
+                                <p>Beef patty with lettuce, tomato, and special sauce</p>
+                                <div class="menu-item-price">
+                                    <span class="price">$8.99</span>
+                                    <button class="add-to-cart">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- More menu items... -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Cart Page -->
+        <div id="cart-page" class="page" style="display: none;">
+            <section class="cart-section">
+                <h1>Your Cart</h1>
+                <div class="cart-items" id="cart-items">
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="images/burger1.jpg" alt="Classic Burger">
+                        </div>
+                        <div class="cart-item-info">
+                            <h4>Classic Burger</h4>
+                            <p>Burger Palace</p>
+                            <div class="cart-item-controls">
+                                <div class="quantity-control">
+                                    <button class="quantity-btn minus">-</button>
+                                    <span>1</span>
+                                    <button class="quantity-btn plus">+</button>
+                                </div>
+                                <button class="remove-btn">Remove</button>
+                            </div>
+                        </div>
+                        <div class="cart-item-price">
+                            $8.99
+                        </div>
+                    </div>
+                </div>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotal">$8.99</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee</span>
+                        <span>$2.99</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="total">$11.98</span>
+                    </div>
+                    <button id="checkout-btn" class="btn-primary">Proceed to Checkout</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Confirmation Page -->
+        <div id="confirmation-page" class="page" style="display: none;">
+            <section class="confirmation">
+                <div class="confirmation-card">
+                    <div class="icon">✓</div>
+                    <h1>Order Confirmed!</h1>
+                    <p>Your food is on the way!</p>
+                    <p class="order-id">Order ID: #<span id="order-id">DL-123456</span></p>
+                    <p>Estimated delivery: <strong>30 minutes</strong></p>
+                    <a href="#" class="btn-primary nav-link" data-page="home">Back to Home</a>
+                </div>
+            </section>
+        </div>
     </main>
 
+    <!-- Footer (Shared across all pages) -->
     <footer>
         <div class="container">
             <p>&copy; 2023 DishLyft. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirm Your Order</h2>
+            <p>Your total is <span id="modal-total">$11.98</span></p>
+            <div class="modal-buttons">
+                <button id="confirm-order" class="btn-primary">Place Order</button>
+                <button class="btn-secondary close-modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple page navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(p => {
+                    p.style.display = 'none';
+                });
+                
+                // Show selected page
+                document.getElementById(`${page}-page`).style.display = 'block';
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                link.classList.add('active');
+            });
+        });
+
+        // Initialize with home page
+        document.querySelector('.nav-link[data-page="home"]').classList.add('active');
+    </script>
 </body>
 </html>
