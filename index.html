@@ -1,220 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DishLyft - Food Delivery</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css" source="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DishLyft - Food Delivery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="images/dishlyft-logo.png" alt="DishLyft Logo" width="150">
-            </div>
-            <button id="menu-toggle" class="mobile-nav-button" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav id="main-nav">
-                <ul class="nav-list">
-                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
-                    <li><a href="#" class="nav-link" data-page="orders">Orders</a></li>
-                    <li><a href="#" class="nav-link" data-page="account">Account</a></li>
-                    <li><a href="#" class="cart-link nav-link" data-page="cart">Cart (<span id="cart-count">0</span>)</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content Area -->
-    <main class="container" id="page-container">
-        <!-- Home Page -->
-        <div id="home-page" class="page active">
-            <section class="search-section">
-                <i class="fas fa-search"></i>
-                <input type="search" id="search-bar" placeholder="Search restaurants or cuisine..." aria-label="Search restaurants">
-            </section>
-
-            <section class="categories">
-                <h2>Categories</h2>
-                <div class="category-list">
-                    <button class="active">All</button>
-                    <button>Fast Food</button>
-                    <button>Local</button>
-                    <button>Drinks</button>
-                    <button>Healthy</button>
-                    <button>Desserts</button>
-                </div>
-            </section>
-
-            <section class="featured">
-                <h2>Featured Restaurants</h2>
-                <div class="restaurant-grid" id="restaurants">
-                    <!-- Restaurant cards will be loaded here -->
-                </div>
-            </section>
-        </div>
-
-        <!-- Restaurant Detail Page -->
-        <div id="restaurant-page" class="page">
-            <button class="back-button" data-page="home">
-                <i class="fas fa-arrow-left"></i> Back to Restaurants
-            </button>
-            <div class="restaurant-detail-container">
-                <div class="restaurant-header">
-                    <div class="image-container">
-                        <img id="restaurant-cover" alt="Restaurant Cover" class="restaurant-cover">
-                    </div>
-                    <div class="restaurant-info">
-                        <h2 id="restaurant-name"></h2>
-                        <p id="restaurant-cuisine" class="cuisine-type"></p>
-                        <div class="details">
-                            <span>⭐ 4.5 (250+)</span>
-                            <span>🛵 $2.99 delivery</span>
-                            <span>⏱️ 20-30 min</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu-section">
-                    <h3 class="section-title">Menu</h3>
-                    <div id="restaurant-menu-list" class="menu-grid"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Cart Page -->
-        <div id="cart-page" class="page">
-            <button class="back-button" data-page="home">
-                <i class="fas fa-arrow-left"></i> Back to Restaurants
-            </button>
-            <div class="cart-container">
-                <h2 class="section-title">Your Cart</h2>
-                
-                <div class="cart-content">
-                    <ul id="cart-items" class="cart-items-list"></ul>
-                    
-                    <div class="cart-summary">
-                        <div class="summary-row">
-                            <span>Subtotal</span>
-                            <span id="subtotal">$0.00</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Delivery Fee</span>
-                            <span>$2.99</span>
-                        </div>
-                        <div class="summary-row total">
-                            <span>Total</span>
-                            <span id="total">$2.99</span>
-                        </div>
-                        
-                        <div class="cart-actions">
-                            <button class="secondary-btn" data-page="home">
-                                <i class="fas fa-utensils"></i> Continue Shopping
-                            </button>
-                            <button class="primary-btn" id="checkout-btn">
-                                <i class="fas fa-credit-card"></i> Proceed to Payment
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Payment Page -->
-        <div id="payment-page" class="page">
-            <button class="back-button" data-page="cart">
-                <i class="fas fa-arrow-left"></i> Back to Cart
-            </button>
-            <div class="payment-container">
-                <h2 class="section-title">Payment Method</h2>
-                
-                <div class="payment-methods">
-                    <div class="payment-method selected" data-method="card">
-                        <div class="payment-icon">
-                            <i class="far fa-credit-card"></i>
-                        </div>
-                        <span>Credit/Debit Card</span>
-                    </div>
-                    <div class="payment-method" data-method="paypal">
-                        <div class="payment-icon">
-                            <i class="fab fa-cc-paypal"></i>
-                        </div>
-                        <span>PayPal</span>
-                    </div>
-                </div>
-                
-                <div id="card-payment" class="payment-form active">
-                    <div class="form-group">
-                        <label for="card-number">Card Number</label>
-                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" class="card-input">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="card-name">Name on Card</label>
-                        <input type="text" id="card-name" placeholder="John Doe" class="card-input">
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="card-expiry">Expiry Date</label>
-                            <input type="text" id="card-expiry" placeholder="MM/YY" class="card-input">
-                        </div>
-                        <div class="form-group">
-                            <label for="card-cvv">CVV</label>
-                            <input type="text" id="card-cvv" placeholder="123" class="card-input">
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="paypal-payment" class="payment-form">
-                    <div class="paypal-info">
-                        <i class="fab fa-cc-paypal paypal-logo"></i>
-                        <p>You will be redirected to PayPal to complete your payment</p>
-                    </div>
-                </div>
-                
-                <button class="primary-btn" id="complete-payment">
-                    <i class="fas fa-check-circle"></i> Complete Payment
-                </button>
-            </div>
-        </div>
-
-        <!-- Order Confirmation Page -->
-        <div id="confirmation-page" class="page">
-            <section class="confirmation">
-                <div class="confirmation-card">
-                    <div class="icon">✓</div>
-                    <h1>Order Confirmed!</h1>
-                    <p>Your food is on the way!</p>
-                    <p class="order-id">Order ID: #<span id="order-id">DL-123456</span></p>
-                    <p>Estimated delivery: <strong>30 minutes</strong></p>
-                    <a href="#" class="primary-btn nav-link" data-page="home">
-                        <i class="fas fa-home"></i> Back to Home
-                    </a>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 DishLyft. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast">
-        <span class="toast-message"></span>
+  <!-- Header with Navigation -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="images/dishlyft-logo.png" alt="DishLyft Logo" width="150">
+      </div>
+      <button id="menu-toggle" class="mobile-nav-button" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link" data-view="home">Home</a></li>
+          <li><a href="#" class="nav-link" data-view="orders">Orders</a></li>
+          <li><a href="#" class="nav-link" data-view="account">Account</a></li>
+          <li><a href="#" class="nav-link cart-link" data-view="cart">Cart (<span id="cart-count">0</span>)</a></li>
+          <li><a href="#" class="nav-link" data-view="login">Login</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <script src="js/script.js"></script>
+  <!-- Main Content Area -->
+  <main>
+    <!-- Home View -->
+    <section id="home-view" class="view active">
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="search" id="search-bar" placeholder="Search restaurants or cuisine..." aria-label="Search restaurants">
+      </div>
+      
+      <div class="categories">
+        <h2>Categories</h2>
+        <div class="category-list">
+          <button class="active">All</button>
+          <button>Fast Food</button>
+          <button>Local</button>
+          <button>Drinks</button>
+          <button>Healthy</button>
+          <button>Desserts</button>
+        </div>
+      </div>
+      
+      <div id="restaurant-list" class="grid-container"></div>
+    </section>
+
+    <!-- Restaurant Detail View -->
+    <section id="restaurant-view" class="view">
+      <button class="back-button" data-view="home">
+        <i class="fas fa-arrow-left"></i> Back to Restaurants
+      </button>
+      <div id="restaurant-details" class="restaurant-detail-container">
+        <div class="restaurant-header">
+          <div class="image-container">
+            <img id="restaurant-cover" alt="Restaurant Cover" class="restaurant-cover">
+          </div>
+          <div class="restaurant-info">
+            <h2 id="restaurant-name"></h2>
+            <p id="restaurant-cuisine" class="cuisine-type"></p>
+            <div class="details">
+              <span id="restaurant-rating">⭐ 4.5 (250+)</span>
+              <span id="restaurant-delivery">🛵 $2.99 delivery</span>
+              <span id="restaurant-time">⏱️ 20-30 min</span>
+            </div>
+          </div>
+        </div>
+        <div class="menu-section">
+          <h3 class="section-title">Menu</h3>
+          <div id="restaurant-menu-list" class="menu-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Panel View -->
+    <section id="admin-panel" class="view">
+      <button class="back-button" data-view="home">
+        <i class="fas fa-arrow-left"></i> Back to Restaurants
+      </button>
+      <div class="admin-container">
+        <h2 class="section-title">Add Restaurant</h2>
+        
+        <div class="form-group">
+          <label for="res-name">Restaurant Name</label>
+          <input type="text" id="res-name" placeholder="Enter restaurant name">
+        </div>
+        
+        <div class="form-group">
+          <label for="res-cuisine">Cuisine Type</label>
+          <input type="text" id="res-cuisine" placeholder="Enter cuisine type">
+        </div>
+        
+        <div class="form-group">
+          <label>Menu Items</label>
+          <div id="menu-items-container" class="menu-items-list">
+            <div class="menu-item-input">
+              <input type="text" class="menu-item-name" placeholder="Item name">
+              <input type="number" class="menu-item-price" placeholder="Price" min="0" step="0.01">
+              <button class="remove-item-btn" aria-label="Remove item">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <button class="add-item-btn" onclick="addMenuItem()">
+            <i class="fas fa-plus"></i> Add Menu Item
+          </button>
+        </div>
+        
+        <div class="form-group">
+          <label for="res-image-file">Cover Image</label>
+          <div class="file-upload">
+            <input type="file" id="res-image-file" accept="image/*">
+            <label for="res-image-file" class="file-upload-label">
+              <i class="fas fa-upload"></i> Choose Image
+            </label>
+          </div>
+          <div class="image-preview-container">
+            <img id="image-preview" src="" alt="Preview" class="image-preview">
+          </div>
+        </div>
+        
+        <button class="submit-btn" onclick="addRestaurant()">
+          <i class="fas fa-save"></i> Save Restaurant
+        </button>
+        
+        <p id="admin-msg" class="status-message"></p>
+      </div>
+    </section>
+
+    <!-- Cart View -->
+    <section id="cart-view" class="view">
+      <button class="back-button" data-view="home">
+        <i class="fas fa-arrow-left"></i> Back to Restaurants
+      </button>
+      <div class="cart-container">
+        <h2 class="section-title">Your Cart</h2>
+        
+        <div class="cart-content">
+          <ul id="cart-items" class="cart-items-list"></ul>
+          
+          <div class="cart-summary">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Delivery Fee</span>
+              <span>$2.99</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span id="cart-total">$2.99</span>
+            </div>
+            
+            <div class="cart-actions">
+              <button class="secondary-btn" onclick="showView('home')">
+                <i class="fas fa-utensils"></i> Continue Shopping
+              </button>
+              <button class="primary-btn" onclick="showPayment()">
+                <i class="fas fa-credit-card"></i> Proceed to Payment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payment View -->
+    <section id="payment-view" class="view">
+      <button class="back-button" data-view="cart">
+        <i class="fas fa-arrow-left"></i> Back to Cart
+      </button>
+      <div class="payment-container">
+        <h2 class="section-title">Payment Method</h2>
+        
+        <div class="payment-methods">
+          <div class="payment-method selected" data-method="card">
+            <div class="payment-icon">
+              <i class="far fa-credit-card"></i>
+            </div>
+            <span>Credit/Debit Card</span>
+          </div>
+          <div class="payment-method" data-method="paypal">
+            <div class="payment-icon">
+              <i class="fab fa-cc-paypal"></i>
+            </div>
+            <span>PayPal</span>
+          </div>
+        </div>
+        
+        <div id="card-payment" class="payment-form active">
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" class="card-input">
+          </div>
+          
+          <div class="form-group">
+            <label for="card-name">Name on Card</label>
+            <input type="text" id="card-name" placeholder="John Doe" class="card-input">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card-expiry">Expiry Date</label>
+              <input type="text" id="card-expiry" placeholder="MM/YY" class="card-input">
+            </div>
+            <div class="form-group">
+              <label for="card-cvv">CVV</label>
+              <input type="text" id="card-cvv" placeholder="123" class="card-input">
+            </div>
+          </div>
+        </div>
+        
+        <div id="paypal-payment" class="payment-form">
+          <div class="paypal-info">
+            <i class="fab fa-cc-paypal paypal-logo"></i>
+            <p>You will be redirected to PayPal to complete your payment</p>
+          </div>
+        </div>
+        
+        <button class="submit-btn" onclick="processPayment()">
+          <i class="fas fa-check-circle"></i> Complete Payment
+        </button>
+      </div>
+    </section>
+
+    <!-- Order Confirmation View -->
+    <section id="confirmation-view" class="view">
+      <div class="confirmation">
+        <div class="confirmation-card">
+          <div class="icon">✓</div>
+          <h1>Order Confirmed!</h1>
+          <p>Your food is on the way!</p>
+          <p class="order-id">Order ID: #<span id="order-id">DL-123456</span></p>
+          <p>Estimated delivery: <strong>30 minutes</strong></p>
+          <a href="#" class="btn-primary nav-link" data-view="home">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal">
+    <div class="modal-overlay" onclick="hideModal('login-modal')"></div>
+    <div class="modal-content">
+      <button class="close-modal" onclick="hideModal('login-modal')" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <!-- Customer Login Side -->
+          <div class="flip-card-front">
+            <h2 class="modal-title">Customer Login</h2>
+            
+            <div class="social-login">
+              <button class="social-btn google-btn" onclick="socialLogin('google')">
+                <i class="fab fa-google"></i>
+                <span>Login with Google</span>
+              </button>
+              
+              <button class="social-btn apple-btn" onclick="socialLogin('apple')">
+                <i class="fab fa-apple"></i>
+                <span>Login with Apple</span>
+              </button>
+            </div>
+            
+            <button class="flip-btn" onclick="flipCard()">
+              Restaurant Owner? Login Here
+            </button>
+          </div>
+          
+          <!-- Owner Login Side -->
+          <div class="flip-card-back">
+            <h2 class="modal-title">Owner Login</h2>
+            
+            <div class="form-group">
+              <label for="owner-username">Username</label>
+              <input type="text" id="owner-username" placeholder="Enter username">
+            </div>
+            
+            <div class="form-group">
+              <label for="owner-password">Password</label>
+              <input type="password" id="owner-password" placeholder="Enter password">
+            </div>
+            
+            <button class="submit-btn" onclick="ownerLogin()">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+            
+            <button class="flip-btn" onclick="flipCard()">
+              Customer Login
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <p id="login-error" class="error-message"></p>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span class="toast-message"></span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 DishLyft. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
