@@ -63,44 +63,28 @@ const defaultRestaurants = [
     ]
   },
   {
-  "name": "Shake Joint",
-  "cuisine": "Desserts • Milkshakes",
-  "image": "images/restaurant4.png",
-  "rating": 4.8,
-  "deliveryFee": 1.99,
-  "deliveryTime": "15-25 min",
-  "menu": [
+    name": "Shake Joint",
+    cuisine: "Desserts • Milkshakes",
+    image: "images/restaurant4.png",
+    rating: 4.8,
+    deliveryFee: 1.99,
+    deliveryTime: "15-25 min",
+    menu: [
     {
-      "id": 401,
-      "name": "Classic Chocolate Overload",
-      "description": "Rich chocolate ice cream blended with chocolate syrup, topped with whipped cream and chocolate shavings",
-      "price": 6.99,
-      "category": "Milkshakes",
-      "image": "images/chocolate-shake.jpg"
+      id: 401,
+      name: "Classic Chocolate Overload",
+      description: "Rich chocolate ice cream blended with chocolate syrup, topped with whipped cream and chocolate shavings",
+      price: 6.99,
+      category: "Milkshakes",
+      image: "images/chocolate-shake.jpg"
     },
     {
-      "id": 402,
-      "name": "Strawberry Dream",
-      "description": "Creamy strawberry ice cream blended with fresh strawberries, topped with whipped cream and strawberry drizzle",
-      "price": 6.99,
-      "category": "Milkshakes",
-      "image": "images/strawberry-shake.jpg"
-    },
-    {
-      "id": 403,
-      "name": "Cookies & Cream Delight",
-      "description": "Vanilla ice cream blended with Oreo cookies, topped with whipped cream and cookie crumbles",
-      "price": 7.49,
-      "category": "Milkshakes",
-      "image": "images/cookies-shake.jpg"
-    },
-    {
-      "id": 404,
-      "name": "Salted Caramel Pretzel",
-      "description": "Caramel ice cream blended with pretzel pieces, topped with whipped cream, caramel drizzle and pretzel crumbs",
-      "price": 7.99,
-      "category": "Signature Shakes",
-      "image": "images/caramel-shake.jpg"
+      id: 402,
+      name: "Strawberry Dream",
+      description: "Creamy strawberry ice cream blended with fresh strawberries, topped with whipped cream and strawberry drizzle",
+      price: 6.99,
+      category: "Milkshakes",
+      image: "images/strawberry-shake.jpg"
     }
   ]
 }
