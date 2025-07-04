@@ -63,7 +63,7 @@ const defaultRestaurants = [
     ]
   },
   {
-    name": "Shake Joint",
+    name: "Shake Joint",
     cuisine: "Desserts • Milkshakes",
     image: "images/restaurant4.png",
     rating: 4.8,
@@ -86,7 +86,7 @@ const defaultRestaurants = [
       category: "Milkshakes",
       image: "images/strawberry-shake.jpg"
     }
-  ]
+  ],
 }
 ];
 
@@ -402,7 +402,11 @@ function removeFromCart(itemId, restaurantIndex) {
 }
 
 function saveCart() {
-  localStorage.setItem('cart', JSON.stringify(cart));
+  try {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  } catch (e) {
+    console.error("Failed to save cart:", e);
+  }
 }
 
 function updateCartCount() {
@@ -641,3 +645,9 @@ function showToast(message) {
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', init);
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
