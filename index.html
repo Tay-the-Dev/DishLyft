@@ -8,23 +8,23 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
+  <header class="black-header">
     <div class="header-container">
       <div class="logo">
-        <svg viewBox="0 0 150 40" xmlns="http://www.w3.org/2000/svg">
-          <style>.dish-text{font:bold 24px 'Segoe UI',sans-serif;fill:#fff}.lyft-text{font:bold 24px 'Segoe UI',sans-serif;fill:#A78BFA}</style>
-          <text x="0" y="28" class="dish-text">Dish</text>
-          <text x="58" y="28" class="lyft-text">Lyft</text>
-        </svg>
+        <img src="images/dishlyft-logo.png" alt="DishLyft Logo" class="logo-image">
+      </div>
+      <div class="search-container">
+        <i class="fas fa-search"></i>
+        <input type="search" id="search-bar" placeholder="Search restaurants or cuisine..." aria-label="Search restaurants">
       </div>
       <button id="menu-toggle" class="mobile-nav-button" aria-label="Toggle menu">
         <i class="fas fa-bars"></i>
       </button>
       <nav id="main-nav">
         <ul class="nav-list">
-          <li><a href="#" class="nav-link" data-view="home">Home</a></li>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About Us</a></li>
           <li><a href="#" class="nav-link" data-view="orders">Orders</a></li>
-          <li><a href="#" class="nav-link" data-view="account">Account</a></li>
           <li><a href="#" class="nav-link cart-link" data-view="cart">Cart (<span id="cart-count">0</span>)</a></li>
           <li><a href="#" class="nav-link" data-view="login">Login</a></li>
         </ul>
@@ -32,26 +32,121 @@
     </div>
   </header>
 
+  <!-- Sidebar Navigation -->
+  <div id="sidebar" class="sidebar">
+    <button class="close-sidebar" onclick="closeSidebar()"><i class="fas fa-times"></i></button>
+    <ul class="sidebar-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="#" data-view="orders">Your Orders</a></li>
+      <li><a href="#" data-view="cart">Cart</a></li>
+      <li><a href="#" data-view="login">Login/Sign Up</a></li>
+      <li><a href="partners.html" class="partner-link">DishLyft for Restaurant Owners</a></li>
+    </ul>
+  </div>
+
   <main>
     <section id="home-view" class="view active">
-      <div class="search-container">
-        <i class="fas fa-search"></i>
-        <input type="search" id="search-bar" placeholder="Search restaurants or cuisine..." aria-label="Search restaurants">
-      </div>
-      <div class="categories">
-        <h2>Categories</h2>
-        <div class="category-list">
-          <button class="active">All</button>
-          <button>Fast Food</button>
-          <button>Local</button>
-          <button>Drinks</button>
-          <button>Healthy</button>
-          <button>Desserts</button>
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1>Your favorite food, delivered fast</h1>
+          <p>Order from your favorite restaurants with just a few taps</p>
         </div>
       </div>
-      <div id="restaurant-list" class="grid-container"></div>
+
+      <!-- Featured Restaurants Section -->
+      <div class="featured-restaurants">
+        <h2 class="section-title">Featured Restaurants</h2>
+        <div class="restaurant-grid">
+          <!-- Restaurant items will be dynamically added here -->
+          <div class="restaurant-card" onclick="showRestaurant('restaurant1')">
+            <img src="images/restaurants/burger-place.jpg" alt="Burger Place">
+            <div class="restaurant-info">
+              <h3>Burger Palace</h3>
+              <div class="rating-delivery">
+                <span class="rating">⭐ 4.5 (250+)</span>
+                <span class="delivery">$2.99 delivery</span>
+              </div>
+              <p class="cuisine">American • Burgers • Fast Food</p>
+            </div>
+          </div>
+          <div class="restaurant-card" onclick="showRestaurant('restaurant2')">
+            <img src="images/restaurants/pizza-place.jpg" alt="Pizza Place">
+            <div class="restaurant-info">
+              <h3>Pizza Heaven</h3>
+              <div class="rating-delivery">
+                <span class="rating">⭐ 4.7 (320+)</span>
+                <span class="delivery">$1.99 delivery</span>
+              </div>
+              <p class="cuisine">Italian • Pizza • Pasta</p>
+            </div>
+          </div>
+          <div class="restaurant-card" onclick="showRestaurant('restaurant3')">
+            <img src="images/restaurants/sushi-place.jpg" alt="Sushi Place">
+            <div class="restaurant-info">
+              <h3>Sushi World</h3>
+              <div class="rating-delivery">
+                <span class="rating">⭐ 4.8 (180+)</span>
+                <span class="delivery">$3.99 delivery</span>
+              </div>
+              <p class="cuisine">Japanese • Sushi • Asian</p>
+            </div>
+          </div>
+          <div class="restaurant-card" onclick="showRestaurant('restaurant4')">
+            <img src="images/restaurants/mexican-place.jpg" alt="Mexican Place">
+            <div class="restaurant-info">
+              <h3>Mexican Fiesta</h3>
+              <div class="rating-delivery">
+                <span class="rating">⭐ 4.4 (210+)</span>
+                <span class="delivery">$2.49 delivery</span>
+              </div>
+              <p class="cuisine">Mexican • Tacos • Burritos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Section -->
+      <div class="categories">
+        <h2 class="section-title">Categories</h2>
+        <div class="category-grid">
+          <div class="category-card" onclick="filterByCategory('burgers')">
+            <img src="images/categories/burgers.jpg" alt="Burgers">
+            <h3>Burgers</h3>
+          </div>
+          <div class="category-card" onclick="filterByCategory('pizza')">
+            <img src="images/categories/pizza.jpg" alt="Pizza">
+            <h3>Pizza</h3>
+          </div>
+          <div class="category-card" onclick="filterByCategory('sushi')">
+            <img src="images/categories/sushi.jpg" alt="Sushi">
+            <h3>Sushi</h3>
+          </div>
+          <div class="category-card" onclick="filterByCategory('mexican')">
+            <img src="images/categories/mexican.jpg" alt="Mexican">
+            <h3>Mexican</h3>
+          </div>
+          <div class="category-card" onclick="filterByCategory('asian')">
+            <img src="images/categories/asian.jpg" alt="Asian">
+            <h3>Asian</h3>
+          </div>
+          <div class="category-card" onclick="filterByCategory('desserts')">
+            <img src="images/categories/desserts.jpg" alt="Desserts">
+            <h3>Desserts</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- All Restaurants Section -->
+      <div class="all-restaurants">
+        <h2 class="section-title">All Restaurants</h2>
+        <div class="restaurant-grid" id="restaurant-list">
+          <!-- Restaurant items will be dynamically added here -->
+        </div>
+      </div>
     </section>
 
+    <!-- Restaurant View -->
     <section id="restaurant-view" class="view">
       <button class="back-button" data-view="home"><i class="fas fa-arrow-left"></i> Back to Restaurants</button>
       <div id="restaurant-details" class="restaurant-detail-container">
@@ -76,44 +171,18 @@
       </div>
     </section>
 
-    <section id="admin-panel" class="view">
-      <button class="back-button" data-view="home"><i class="fas fa-arrow-left"></i> Back to Restaurants</button>
-      <div class="admin-container">
-        <h2 class="section-title">Add Restaurant</h2>
-        <div class="form-group">
-          <label for="res-name">Restaurant Name</label>
-          <input type="text" id="res-name" placeholder="Enter restaurant name">
+    <!-- Orders View -->
+    <section id="orders-view" class="view">
+      <button class="back-button" data-view="home"><i class="fas fa-arrow-left"></i> Back to Home</button>
+      <div class="orders-container">
+        <h2 class="section-title">Your Orders</h2>
+        <div id="orders-list" class="orders-list">
+          <!-- Orders will be dynamically added here -->
         </div>
-        <div class="form-group">
-          <label for="res-cuisine">Cuisine Type</label>
-          <input type="text" id="res-cuisine" placeholder="Enter cuisine type">
-        </div>
-        <div class="form-group">
-          <label>Menu Items</label>
-          <div id="menu-items-container" class="menu-items-list">
-            <div class="menu-item-input">
-              <input type="text" class="menu-item-name" placeholder="Item name">
-              <input type="number" class="menu-item-price" placeholder="Price" min="0" step="0.01">
-              <button class="remove-item-btn" aria-label="Remove item"><i class="fas fa-times"></i></button>
-            </div>
-          </div>
-          <button class="add-item-btn" onclick="addMenuItem()"><i class="fas fa-plus"></i> Add Menu Item</button>
-        </div>
-        <div class="form-group">
-          <label for="res-image-file">Cover Image</label>
-          <div class="file-upload">
-            <input type="file" id="res-image-file" accept="image/*">
-            <label for="res-image-file" class="file-upload-label"><i class="fas fa-upload"></i> Choose Image</label>
-          </div>
-          <div class="image-preview-container">
-            <img id="image-preview" src="" alt="Preview" class="image-preview">
-          </div>
-        </div>
-        <button class="submit-btn" onclick="addRestaurant()"><i class="fas fa-save"></i> Save Restaurant</button>
-        <p id="admin-msg" class="status-message"></p>
       </div>
     </section>
 
+    <!-- Cart View -->
     <section id="cart-view" class="view">
       <button class="back-button" data-view="home"><i class="fas fa-arrow-left"></i> Back to Restaurants</button>
       <div class="cart-container">
@@ -142,6 +211,7 @@
       </div>
     </section>
 
+    <!-- Payment View -->
     <section id="payment-view" class="view">
       <button class="back-button" data-view="cart"><i class="fas fa-arrow-left"></i> Back to Cart</button>
       <div class="payment-container">
@@ -186,6 +256,7 @@
       </div>
     </section>
 
+    <!-- Confirmation View -->
     <section id="confirmation-view" class="view">
       <div class="confirmation">
         <div class="confirmation-card">
@@ -200,6 +271,7 @@
     </section>
   </main>
 
+  <!-- Login Modal -->
   <div id="login-modal" class="modal">
     <div class="modal-overlay" onclick="hideModal('login-modal')"></div>
     <div class="modal-content">
@@ -245,11 +317,39 @@
 
   <footer>
     <div class="footer-container">
-      <p>&copy; 2025 DishLyft. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Partner With Us</h3>
+          <ul>
+            <li><a href="partners.html">Add Your Restaurant</a></li>
+            <li><a href="#">Become a Driver</a></li>
+            <li><a href="#">Business Accounts</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 DishLyft. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
       </div>
     </div>
   </footer>
