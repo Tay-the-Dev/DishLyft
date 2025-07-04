@@ -28,7 +28,7 @@ const defaultRestaurants = [
   {
     name: "Burger Palace",
     cuisine: "American • Fast Food",
-    image: "images/restaurant1.jpg",
+    image: "images/restaurant1.png",
     rating: 4.5,
     deliveryFee: 2.99,
     deliveryTime: "20-30 min",
@@ -41,7 +41,7 @@ const defaultRestaurants = [
   {
     name: "Pizza Heaven",
     cuisine: "Italian • Pizza",
-    image: "images/restaurant2.jpg",
+    image: "images/restaurant2.png",
     rating: 4.7,
     deliveryFee: 3.49,
     deliveryTime: "25-35 min",
@@ -53,7 +53,7 @@ const defaultRestaurants = [
   {
     name: "Green Bowl",
     cuisine: "Healthy • Salads",
-    image: "images/restaurant5.jpg",
+    image: "images/restaurant3.png",
     rating: 4.6,
     deliveryFee: 3.99,
     deliveryTime: "20-30 min",
