@@ -44,7 +44,7 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  min-height: calc(100vh - 140px); /* Account for header/footer */
+  min-height: calc(100vh - 140px);
 }
 
 .view {
@@ -65,7 +65,7 @@ main {
 
 /* ===== HEADER & NAVIGATION ===== */
 header {
-  background-color: #000;
+  background-color: var(--primary);
   color: var(--text-light);
   position: sticky;
   top: 0;
@@ -73,7 +73,8 @@ header {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo img {
+.logo svg {
+  width: 150px;
   height: 40px;
 }
 
@@ -155,11 +156,11 @@ header {
   gap: 10px;
   overflow-x: auto;
   padding: 10px 0;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 .category-list::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
 .category-list button {
@@ -937,8 +938,10 @@ footer {
 
   .cart-actions {
     flex-direction: column;
+  }
+}
 
-    /* ===== DishLyft Logo Component ===== */
+/* ===== DishLyft Logo Animation ===== */
 .logo {
   display: flex;
   align-items: center;
@@ -947,62 +950,6 @@ footer {
   transition: var(--transition);
 }
 
-.logo-text {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--primary);
-}
-
-.logo-icon {
-  position: relative;
-  width: 40px;
-  height: 30px;
-  transition: transform 0.3s ease;
-}
-
-.logo-icon::before,
-.logo-icon::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  background-color: var(--primary);
-  transition: transform 0.4s ease;
-  border-radius: 10px;
-}
-
-.logo-icon::before {
-  top: 10px;
-  height: 15px;
-  border-radius: 100px 100px 0 0;
-}
-
-.logo-icon::after {
-  top: 22px;
-  height: 6px;
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* Knob on top */
-.logo-icon .knob {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  background-color: var(--primary);
-  border-radius: 50%;
-}
-
-/* Hover/Tap Animation */
-.logo:hover .logo-icon::before {
-  transform: translateY(-5px) rotate(-5deg);
-}
-.logo:hover .logo-icon::after {
-  transform: translateY(3px) rotate(5deg);
-}
-.logo:hover .logo-icon {
-  transform: translateX(5px);
+.logo:hover {
+  transform: scale(1.05);
 }
